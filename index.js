@@ -6,12 +6,11 @@ var city, country;
 var request = new XMLHttpRequest();
 var data;
 request.open('GET', 'http://project-weather-0911414.s3-website-us-east-1.amazonaws.com/', true);
-
+request.onload = function () {
+    data = JSON.parse(this.response);
+}
 request.onreadystatechange = () => {
-    if (request.status >= 200 && request.status < 400) {
-        data = JSON.parse(this.response);
-    }
-    else {
+    if (request.status === 404) {
         document.getElementById("error").innerHTML = "Sorry, can't get city list!";
         document.getElementById("error").style.visibility = "visible";
     }
@@ -96,27 +95,27 @@ document.getElementById("submit").addEventListener("click", function () {
     request.onload = function () {
 
         let data = JSON.parse(this.response);
-        request.onreadystatechange = () => {
-            if (request.status >= 200 && request.status < 400) {
-                data.weather.forEach(obj => {
-                    var celsius = Math.round(((data.main.temp - 273.15) * 100) / 100);
-                    document.getElementById("h1_id").innerHTML = `<img src="http://openweathermap.org/img/wn/${obj.icon}@2x.png">`;
-                    document.getElementById("h2_id").innerHTML = `${data.name}, ${data.sys.country}`;
-                    document.getElementById("p1_id").innerHTML = `${obj.description}
-                            Temperature: ${celsius}
-                            Pressure: ${data.main.pressure}
-                            Humidity: ${data.main.humidity}
-                            Wind: ${data.wind.speed}
-                            Clouds: ${data.clouds.all}`;
-                });
+        data.weather.forEach(obj => {
+            var celsius = Math.round(((data.main.temp - 273.15) * 100) / 100);
+            document.getElementById("h1_id").innerHTML = `<img src="http://openweathermap.org/img/wn/${obj.icon}@2x.png">`;
+            document.getElementById("h2_id").innerHTML = `${data.name}, ${data.sys.country}`;
+            document.getElementById("p1_id").innerHTML = `${obj.description}
+                        Temperature: ${celsius}
+                        Pressure: ${data.main.pressure}
+                        Humidity: ${data.main.humidity}
+                        Wind: ${data.wind.speed}
+                        Clouds: ${data.clouds.all}`;
+        });
 
-                container.style.visibility = 'visible';
-                document.getElementById("error").style.visibility = 'hidden';
+        container.style.visibility = 'visible';
+        document.getElementById("error").style.visibility = 'hidden';
+    }
 
-            } else {
-                document.getElementById("error").innerHTML = "Sorry, can't get weather!";
-                document.getElementById("error").style.visibility = 'visible';
-            }
+    request.onreadystatechange = () => {
+        if (request.status === 404) {
+            
+            document.getElementById("error").innerHTML = "Sorry, can't get weather!";
+            document.getElementById("error").style.visibility = "visible";
         }
     }
 
