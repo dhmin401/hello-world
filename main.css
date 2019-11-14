@@ -2,6 +2,12 @@
     box-sizing: border-box
 }*/
 
+#h1_id {
+    width: 12%;
+    max-height: 150px;
+    margin: 2% auto 0 auto;
+}
+
 html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -22,12 +28,8 @@ html {
     margin: 0 auto;
 }
 
-h1 {
-    text-align: center;
-    font-size: 2rem;
-}
-
 h2 {
+    padding: 0;
     text-align: center;
     text-transform: uppercase;
     font-weight: lighter;

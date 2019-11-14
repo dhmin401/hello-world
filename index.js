@@ -14,7 +14,7 @@ request.send();
 function autocomplete(inp) {
     var currentFocus;
     inp.addEventListener("input", function (e) {
-        var a, b, i, val = this.value;
+        var a, b, val = this.value;
 
         closeAllLists();
         if (!val) { return false; }
@@ -37,21 +37,6 @@ function autocomplete(inp) {
                 a.appendChild(b);
             }
         });
-
-        //for (i = 0; i < arr.length; i++) {
-        //    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-        //        b = document.createElement("div");
-        //        //b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-        //        //b.innerHTML += arr[i].substr(val.length);
-        //        b.innerHTML = arr[i];
-        //        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-        //        b.addEventListener("click", function (e) {
-        //            inp.value = this.getElementsByTagName("input")[0].value;
-        //            closeAllLists();
-        //        });
-        //        a.appendChild(b);
-        //    }
-        //}
     })
 
     inp.addEventListener("keydown", function (e) {
@@ -111,8 +96,22 @@ document.getElementById("submit").addEventListener("click", function () {
         let data = JSON.parse(this.response);
         if (request.status >= 200 && request.status < 400) {
 
+          
             data.weather.forEach(obj => {
-                document.getElementById("h1_id").innerHTML = `${obj.main}`;
+                var weather = obj.main;
+                if (weather === 'Clouds') {
+                    document.getElementById("h1_id").innerHTML = '<object data="wi-cloudy.svg"></object>';
+                }
+                else if (weather === 'Clear') {
+                    document.getElementById("h1_id").innerHTML = '<object data="wi-day-sunny-overcast.svg"></object>';
+                }
+                else if (weather === 'Snow') {
+                    document.getElementById("h1_id").innerHTML = '<object data="wi-day-snow.svg"></object>';
+                }
+                else if (weather === 'Rain') {
+                    document.getElementById("h1_id").innerHTML = '<object data="wi-day-rain.svg"></object>';
+                }
+                //document.getElementById("h1_id").innerHTML = `${obj.main}`;
                 document.getElementById("h2_id").innerHTML = `${data.name}, ${data.sys.country}`;
                 document.getElementById("p1_id").innerHTML = `${obj.description}
                             Temperature: ${data.main.temp}
