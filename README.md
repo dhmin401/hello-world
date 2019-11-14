@@ -11,4 +11,5 @@ Weather web app displays current weather of selected city or province. It uses H
 
 2. It uses autocomplete for searching location.
 
-![Alt text](/weather.JPG?raw=true "Optional Title")
+![Alt text](/weather.JPG?raw=true)
+![Alt text](/weather2.JPG?raw=true)
