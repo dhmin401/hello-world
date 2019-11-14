@@ -56,6 +56,10 @@ html {
     background-color: whitesmoke;
 }
 
+.autocomplete-active {
+    font-weight: bold;
+}
+
 .title {
     display: block;
     margin: 1rem auto;
@@ -77,7 +81,6 @@ p {
 }
 
 #error {
-    visibility: hidden;
     text-align: center;
     font-size: 2rem;
 }
