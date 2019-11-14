@@ -4,6 +4,7 @@ Weather web app displays current weather of selected city or province. It uses H
 
 ## Feature
 1. It displays details of current weather.
+- Temperature
 - Humidity
 - Pressure
 - Wind
