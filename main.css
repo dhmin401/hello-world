@@ -1,11 +1,9 @@
-/** {
+* {
     box-sizing: border-box
-}*/
+}
 
 #h1_id {
-    width: 12%;
-    max-height: 150px;
-    margin: 2% auto 0 auto;
+    text-align: center;
 }
 
 html {
@@ -18,6 +16,7 @@ html {
 }
 
 #srchautocomplete-list {
+    padding-left: 2%;
     background-color: whitesmoke;
     width: 50%;
     margin-left: 2%;
@@ -28,11 +27,12 @@ html {
     margin: 0 auto;
 }
 
-h2 {
+#h2_id {
     padding: 0;
+    margin: 0 0 1% 0;
     text-align: center;
     text-transform: uppercase;
-    font-weight: lighter;
+    font-weight: bold;
     font-size: 1.2rem;
 }
 
@@ -76,8 +76,14 @@ p {
     visibility: hidden;
 }
 
+#error {
+    visibility: hidden;
+    text-align: center;
+    font-size: 2rem;
+}
+
 .card {
-    background: #F6F6F6;
+    background: #ffff;
     margin: 1rem;
     box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
     border-radius: 12px;
