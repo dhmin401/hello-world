@@ -6,7 +6,7 @@ var city, country;
 
 var request = new XMLHttpRequest();
 var data;
-request.open('GET', 'https://project-weather-0911414.s3-website-us-east-1.amazonaws.com/', true);
+request.open('GET', 'http://project-weather-0911414.s3-website-us-east-1.amazonaws.com/', true);
 request.onload = function () {
     data = JSON.parse(this.response);
 }
