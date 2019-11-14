@@ -7,9 +7,16 @@ var request = new XMLHttpRequest();
 var data;
 request.open('GET', 'http://project-weather-0911414.s3-website-us-east-1.amazonaws.com/', true);
 request.onload = function () {
-    data = JSON.parse(this.response);
+    if (request.status >= 200 && request.status < 400) {
+        data = JSON.parse(this.response);
+    }
+    else {
+        document.getElementById("error").innerHTML = "Sorry, can't get city list!";
+        document.getElementById("error").style.visibility = "visible";
+    }
 }
-request.onerror = function () {
+request.onreadystatechange = () => {
+    if (request.status === 404)
     document.getElementById("error").innerHTML = "Sorry, can't get city list!";
     document.getElementById("error").style.visibility = "visible";
 }
@@ -110,14 +117,10 @@ document.getElementById("submit").addEventListener("click", function () {
             document.getElementById("error").style.visibility = 'hidden';
 
         } else {
-           
+            document.getElementById("error").innerHTML = "Sorry, can't get weather!";
+            document.getElementById("error").style.visibility = 'visible';
         }
     }
-    request.onerror = function () {
-        document.getElementById("error").innerHTML = "Sorry, can't get weather!";
-        document.getElementById("error").style.visibility = 'visible';
-    }
-
 
     request.send();
 
