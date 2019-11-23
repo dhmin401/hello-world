@@ -14,3 +14,7 @@ Weather web app displays current weather of selected city or province. It uses H
 
 ![Alt text](/weather.JPG?raw=true)
 ![Alt text](/weather2.JPG?raw=true)
+
+To use click load unsafe scripts button.
+
+![Alt text](/tempsnip.jpg?raw=true)
