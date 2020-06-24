@@ -4,9 +4,11 @@ const card = document.getElementById('card');
 var error = null;
 var city, country;
 
+const proxy = "https://cors-anywhere.herokuapp.com/";
+
 var request = new XMLHttpRequest();
 var data;
-request.open('GET', 'http://project-weather-0911414.s3-website-us-east-1.amazonaws.com/', true);
+request.open('GET', 'https://raw.githubusercontent.com/dhmin401/cityJSON/master/city.list.min.json', true);
 request.onload = function () {
     data = JSON.parse(this.response);
 }
@@ -94,7 +96,7 @@ document.getElementById("submit").addEventListener("click", function () {
     city = result.substr(0, result.length - 4);
     country = result.substr(result.length - 2);
 
-    var url = "http://api.openweathermap.org/data/2.5/weather?q=";
+    var url = `${proxy}http://api.openweathermap.org/data/2.5/weather?q=`;
     url += `${city},${country}`;
     url += "&APPID=58b1a1a9d6457389af4eb425f206453f";
     request.open('GET', url, true);
