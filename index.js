@@ -8,7 +8,7 @@ const proxy = "https://cors-anywhere.herokuapp.com/";
 
 var request = new XMLHttpRequest();
 var data;
-request.open('GET', 'https://raw.githubusercontent.com/dhmin401/cityJSON/master/city.list.min.json', true);
+request.open('GET', 'https://raw.githubusercontent.com/dhmin401/weather/master/city.list.min.json', true);
 request.onload = function () {
     data = JSON.parse(this.response);
 }
